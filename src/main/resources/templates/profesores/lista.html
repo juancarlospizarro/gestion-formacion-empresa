@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formación en Empresa - Profesores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body class="bg-light">
+	
+	<div th:replace="~{fragmentos/header :: header}"></div>
+	
+	<div class="container my-5">
+		<div class="col-12" sec:authorize="hasRole('DIRECTIVA')" id="profesores">
+            <div class="alert alert-info border-0 shadow-sm d-flex justify-content-between align-items-center py-4">
+                <div>
+                    <h4 class="alert-heading fw-bold mb-1"><i class="bi bi-person-badge"></i> Profesores</h4>
+                    <p class="mb-0">Listado y gestión de los diferentes profesores.</p>
+                </div>
+            </div>
+        </div>
+	<div class="table-responsive shadow-sm">
+	        <table class="table table-hover table-striped align-middle">
+	            <thead class="table-dark">
+	                <tr>
+	                    <th>Nombre</th>
+	                    <th>Apellidos</th>
+	                    <th>Email</th>
+						<th>Tipo</th>
+	                    <th>Acciones</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                <tr th:each="profesor : ${listaProfesores}">
+	                    <td th:text="${profesor.nombre}" class="fw-bold">Nombre</td>
+	                    <td th:text="${profesor.apellidos}">Apellidos</td>
+	                    <td>
+	                        <a th:href="'mailto:' + ${profesor.email}" th:text="${profesor.email}">email@centro.com</a>
+	                    </td>
+						<td th:text="${profesor.tipo}">Tipo</td>
+						<td>
+						    <div th:if="${profesor.tipo.name() == 'DIRECTIVA'}" class="text-muted small italic">
+						        <i class="bi bi-shield-lock"></i> No tiene los permisos necesarios
+						    </div>
+
+						    <div th:unless="${profesor.tipo.name() == 'DIRECTIVA'}" class="btn-group btn-group-sm">
+						        <a th:href="@{/profesores/editar/{id}(id=${profesor.id})}" class="btn btn-primary">
+						            <i class="bi bi-pencil"></i> Editar
+						        </a>
+						        <button class="btn btn-danger">
+						            <i class="bi bi-trash"></i> Eliminar
+						        </button>
+						    </div>
+						</td>
+	                </tr>
+	            </tbody>
+	        </table>
+	    </div>
+		</div>
+	
+	
+</body>
+</html>

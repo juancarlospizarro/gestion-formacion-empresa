@@ -1,0 +1,60 @@
+<header th:fragment="header">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+	    <div class="container">
+	        <!-- Marca -->
+	        <a class="navbar-brand" href="/">
+	            <i class="bi bi-mortarboard-fill"></i> Formación Empresa
+	        </a>
+
+	        <!-- Botón para mobile -->
+	        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarLinks"
+	            aria-controls="navbarLinks" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+
+	        <!-- Enlaces -->
+	        <div class="collapse navbar-collapse" id="navbarLinks">
+	            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	                <li class="nav-item">
+	                    <a class="nav-link" th:href="@{/alumnos}">Alumnos</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" th:href="@{/empresas}">Empresas</a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" th:href="@{/practicas}">Prácticas</a>
+	                </li>
+					<li class="nav-item" sec:authorize="hasRole('DIRECTIVA')">
+				        <a class="nav-link text-warning" th:href="@{/profesores}">Profesores</a>
+				    </li>
+				    <li class="nav-item" sec:authorize="hasRole('DIRECTIVA')">
+				        <a class="nav-link text-warning" th:href="@{/cursos}">Cursos</a>
+				    </li>
+				    <li class="nav-item" sec:authorize="hasRole('DIRECTIVA')">
+				        <a class="nav-link text-warning" th:href="@{/estadisticas}">
+				            <i class="bi bi-graph-up"></i> Estadísticas
+				        </a>
+				    </li>
+	            </ul>
+
+	            <!-- Usuario y Logout -->
+	            <div class="d-flex align-items-center text-white">
+					<div class="me-3 text-end">
+					        <div class="fw-bold" sec:authentication="name">Nombre Usuario</div>
+					        
+					        <span sec:authorize="hasRole('DIRECTIVA')" class="badge rounded-pill bg-warning text-dark" style="font-size: 0.75rem;">
+					            <i class="bi bi-shield-check"></i> Directiva
+					        </span>
+					        
+					        <span sec:authorize="hasRole('NORMAL')" class="badge rounded-pill bg-dark text-white" style="font-size: 0.75rem;">
+					            <i class="bi bi-person"></i> Profesor
+					        </span>
+					    </div>
+	                <form th:action="@{/logout}" method="post" class="m-0">
+	                    <button class="btn btn-outline-light btn-sm" type="submit">Cerrar Sesión</button>
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+	</nav>
+</header>
