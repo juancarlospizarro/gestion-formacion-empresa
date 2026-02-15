@@ -90,7 +90,7 @@ public class Empresa {
 	@Override
 	public String toString() {
 		return "Empresa [nombre=" + nombre + ", descripcion=" + descripcion + ", tutorNombre=" + tutorNombre
-				+ ", tutorEmail=" + tutorEmail + ", practicas=" + practicas + "]";
+				+ ", tutorEmail=" + tutorEmail + "]";
 	}
     
 }

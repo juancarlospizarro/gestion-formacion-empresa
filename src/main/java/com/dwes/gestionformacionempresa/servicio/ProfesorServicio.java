@@ -12,6 +12,8 @@ public interface ProfesorServicio {
     List<Profesor> listarTodos();
 
     Optional<Profesor> buscarPorEmail(String email);
+    
+    Optional<Profesor> findById(Long id);
 
     void eliminar(Long id);
 }

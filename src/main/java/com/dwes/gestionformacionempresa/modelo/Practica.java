@@ -2,6 +2,8 @@ package com.dwes.gestionformacionempresa.modelo;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.AssertTrue;
 
 @Entity
 @Table(name = "practicas")
@@ -26,8 +29,12 @@ public class Practica {
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechaInicio;
+    
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechaFin;
+    
     private String comentarios;
     
     public Practica() {
@@ -101,6 +108,14 @@ public class Practica {
 
 	public void setComentarios(String comentarios) {
 		this.comentarios = comentarios;
+	}
+	
+	@AssertTrue(message = "La fecha de fin debe ser posterior a la de inicio")
+	public boolean isFechasValidas() {
+	    if (fechaInicio == null || fechaFin == null) {
+	        return true;
+	    }
+	    return fechaFin.isAfter(fechaInicio);
 	}
 
 

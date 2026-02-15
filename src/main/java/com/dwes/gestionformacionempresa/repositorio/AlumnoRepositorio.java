@@ -15,4 +15,6 @@ public interface AlumnoRepositorio extends JpaRepository<Alumno, Long> {
     Optional<Alumno> findByEmail(String email);
 
     boolean existsByEmail(String email);
+    
+    List<Alumno> findByPracticasIsEmpty();
 }

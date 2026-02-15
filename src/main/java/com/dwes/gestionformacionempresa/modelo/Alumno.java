@@ -3,6 +3,8 @@ package com.dwes.gestionformacionempresa.modelo;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.PastOrPresent;
 
 @Entity
 @Table(name = "alumnos")
@@ -26,6 +29,8 @@ public class Alumno {
     @Column(unique = true)
     private String email;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @PastOrPresent(message = "La fecha de nacimiento tiene que ser anterior a la actual")
     private LocalDate fechaNacimiento;
 
     @ManyToOne

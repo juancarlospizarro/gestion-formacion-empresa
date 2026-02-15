@@ -16,13 +16,13 @@
 	        <div class="collapse navbar-collapse" id="navbarLinks">
 	            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	                <li class="nav-item">
-	                    <a class="nav-link" th:href="@{/alumnos}">Alumnos</a>
+	                    <a class="nav-link" th:href="@{/alumnos}" th:text="#{label.alumnos}">Alumnos</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" th:href="@{/empresas}">Empresas</a>
+	                    <a class="nav-link" th:href="@{/empresas}" th:text="#{label.empresas}">Empresas</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" th:href="@{/practicas}">Prácticas</a>
+	                    <a class="nav-link" th:href="@{/practicas}" th:text="#{label.practicas}">Prácticas</a>
 	                </li>
 					<li class="nav-item" sec:authorize="hasRole('DIRECTIVA')">
 				        <a class="nav-link text-warning" th:href="@{/profesores}">Profesores</a>
@@ -32,9 +32,26 @@
 				    </li>
 				    <li class="nav-item" sec:authorize="hasRole('DIRECTIVA')">
 				        <a class="nav-link text-warning" th:href="@{/estadisticas}">
-				            <i class="bi bi-graph-up"></i> Estadísticas
+				            Estadísticas
 				        </a>
 				    </li>
+					<li class="nav-item dropdown">
+										    <a class="nav-link dropdown-toggle" id="langDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										        <i class="bi bi-translate"></i> <span th:text="#{label.idioma}"></span>
+										    </a>
+										    <ul class="dropdown-menu dropdown-menu-end shadow border-0" aria-labelledby="langDropdown">
+										        <li>
+										            <a class="dropdown-item d-flex align-items-center" th:href="@{/(lang=es)}">
+										                <span class="me-2">🇪🇸</span> Español
+										            </a>
+										        </li>
+										        <li>
+										            <a class="dropdown-item d-flex align-items-center" th:href="@{/(lang=en)}">
+										                <span class="me-2">🇬🇧</span> English
+										            </a>
+										        </li>
+										    </ul>
+										</li>
 	            </ul>
 
 	            <!-- Usuario y Logout -->

@@ -47,11 +47,11 @@
 						            </div>
 
 						            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
-						                <div class="btn-group shadow-sm">
-						                    <a th:href="@{/alumnos/nuevo}" class="btn btn-primary">
+						                <div class="btn-group">
+						                    <a th:href="@{/alumnos/nuevo}" class="btn btn-primary mx-2">
 						                        <i class="bi bi-person-plus"></i> Nuevo Alumno
 						                    </a>
-						                    <a th:href="@{/alumnos/importar}" class="btn btn-success">
+						                    <a th:href="@{/alumnos/importarcsv}" class="btn btn-success">
 						                        <i class="bi bi-filetype-csv"></i> Importar CSV
 						                    </a>
 						                </div>
@@ -84,7 +84,10 @@
 	                    <td>
 	                        <div class="btn-group btn-group-sm">
 	                            <a th:href="@{/alumnos/editar/{id}(id=${alumno.id})}" class="btn btn-primary">Editar</a>
-	                            <button class="btn btn-danger">Eliminar</button>
+								<a th:href="@{/alumnos/eliminar/{id}(id=${alumno.id})}" 
+								   class="btn btn-danger">
+								   Eliminar
+								</a>
 	                        </div>
 	                    </td>
 	                </tr>
@@ -93,6 +96,6 @@
 	    </div>
 		</div>
 	
-	
+		<div th:replace="~{fragmentos/footer :: footer}"></div>
 </body>
 </html>

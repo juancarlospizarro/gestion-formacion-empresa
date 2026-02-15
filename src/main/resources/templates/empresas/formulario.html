@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formación en Empresa - Añadir/Editar empresa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body class="bg-light">
+	
+	<div th:replace="~{fragmentos/header :: header}"></div>
+	
+	<div class="container my-5">
+		    <div class="row justify-content-center">
+		        <div class="col-md-8">
+		            <div class="card shadow-sm border-0">
+		                <div class="card-header bg-primary text-white py-3">
+		                    <h4 class="mb-0">
+		                        <i class="bi bi-building me-2"></i>
+		                        <span th:text="${titulo}">Gestión de Empresa</span>
+		                    </h4>
+		                </div>
+		                <div class="card-body p-4">
+		                    <form th:action="@{/empresas/guardar}" th:object="${empresa}" method="post" class="row g-3">
+		                        <input type="hidden" th:field="*{id}">
+
+		                        <div class="col-12 border-bottom pb-2 mb-3">
+		                            <h5 class="text-primary"><i class="bi bi-info-circle"></i> Datos de la Empresa</h5>
+		                        </div>
+
+		                        <div class="col-md-8">
+		                            <label for="nombre" class="form-label fw-bold">Nombre de la Empresa</label>
+		                            <input type="text" th:field="*{nombre}" class="form-control" placeholder="Ej. Tech Solutions S.L." required>
+		                        </div>
+								
+								<div class="col-md-8">
+		                            <label for="descripcion" class="form-label fw-bold">Descripción</label>
+		                            <input id="descripcion" type="text" th:field="*{descripcion}" class="form-control" placeholder="Describe el tipo de empresa aquí." required>
+		                        </div>
+
+		                        <div class="col-12 border-bottom pb-2 mb-3 mt-4">
+		                            <h5 class="text-primary"><i class="bi bi-person-badge"></i> Datos del Tutor Laboral</h5>
+		                        </div>
+
+		                        <div class="col-md-6">
+		                            <label for="nombreTutor" class="form-label fw-bold">Nombre del Tutor</label>
+		                            <input type="text" th:field="*{tutorNombre}" class="form-control" required>
+		                        </div>
+
+		                        <div class="col-md-7">
+		                            <label for="emailTutor" class="form-label fw-bold">Email del Tutor</label>
+		                            <input type="email" th:field="*{tutorEmail}" class="form-control" placeholder="tutor@empresa.com" required>
+		                        </div>
+
+		                        <div class="col-12 mt-5 d-flex justify-content-between">
+		                            <a th:href="@{/empresas}" class="btn btn-outline-secondary">
+		                                <i class="bi bi-arrow-left"></i> Volver
+		                            </a>
+		                            <button type="submit" class="btn btn-primary px-5">
+		                                <i class="bi bi-save"></i> Guardar Empresa
+		                            </button>
+		                        </div>
+		                    </form>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+	
+		<div th:replace="~{fragmentos/footer :: footer}"></div>
+	
+</body>
+</html>

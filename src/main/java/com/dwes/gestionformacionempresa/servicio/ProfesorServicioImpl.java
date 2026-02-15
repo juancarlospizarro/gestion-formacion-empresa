@@ -39,4 +39,10 @@ public class ProfesorServicioImpl implements ProfesorServicio {
     public void eliminar(Long id) {
     	profesorRepositorio.deleteById(id);
     }
+
+	@Override
+	public Optional<Profesor> findById(Long id) {
+		profesorRepositorio.findById(id);
+		return Optional.empty();
+	}
 }
