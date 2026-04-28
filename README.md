@@ -5,7 +5,8 @@ Este proyecto es una aplicación web desarrollada con **Spring Boot** que permit
 
 ### Tecnologías:
 * **Backend:** Java 21, Spring Boot (Spring Security, Spring Validation, Spring MVC, Spring Mail, Spring Data JPA)
-* **Frontend:** Spring Thymeleaf
+* **Gestor de Dependencias:** Maven
+* **Frontend:** Spring Thymeleaf, Bootstrap
 * **Base de Datos:** MySQL
 * **Contenedores:** Docker & Docker Compose (No implementado todavía)
   
@@ -17,6 +18,7 @@ This project is a web application built with **Spring Boot** designed to manage 
 
 ### Tech Stack:
 * **Backend:** Java 21, Spring Boot (Spring Security, Spring Validation, Spring MVC, Spring Mail, Spring Data JPA)
-* **Frontend:** Spring Thymeleaf
+* **Dependency Management:** Maven
+* **Frontend:** Spring Thymeleaf, Bootstrap
 * **Database:** MySQL
 * **Containerization:** Docker & Docker Compose (Not implemented yet)
